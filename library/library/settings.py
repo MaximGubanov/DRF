@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'mainapp',
     'userapp',
     'corsheaders',
+    'todoapp',
 ]
 
 MIDDLEWARE = [
