@@ -1,5 +1,5 @@
 from rest_framework.serializers import HyperlinkedModelSerializer
-from .models import Project, ToDo, UsersProject
+from .models import Project, Todo
 
 
 class ProjectModelSerializer(HyperlinkedModelSerializer):
@@ -10,11 +10,5 @@ class ProjectModelSerializer(HyperlinkedModelSerializer):
 
 class ToDoModelSerializer(HyperlinkedModelSerializer):
     class Meta:
-        model = ToDo
-        fields = '__all__'
-
-
-class UserProjectModelSerializer(HyperlinkedModelSerializer):
-    class Meta:
-        model = UsersProject
-        fields = '__all__'
+        model = Todo
+        fields = ['text', 'created_by', 'assigned_to', 'created_at', 'closed_at', 'is_active', 'project']
