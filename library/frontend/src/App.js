@@ -1,82 +1,38 @@
 import React from 'react';
-import AuthorList from './components/Author.js';
-import UserList from './components/Users.js';
-import MenuList from './components/menu.js';
-import Footer from './components/footer.js';
-import axios from 'axios';
-
-
-// class App extends React.Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//         'authors': []
-//         }
-//     }
-
-//     componentDidMount() {
-//         axios.get('http://127.0.0.1:8000/api/authors')
-//             .then(response => {
-//                 const authors = response.data
-//                     this.setState(
-//                     {
-//                         'authors': authors
-//                     }
-//                 )
-//             }).catch(error => console.log(error))
-//     }
-
-//     render() {
-//         return (
-//             <div>
-//                 < AuthorList authors={this.state.authors} />
-//             </div>
-//         )
-//     }
-// }
-
-// export default App;
+import AuthorList from './components/Authors.js';
+import BookList from './components/Books.js';
 
 
 class App extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-        'users': []
-        }
-    }
 
-    componentDidMount() {
-        axios.get('http://127.0.0.1:8000/api/users')
-            .then(response => {
-                const users = response.data
-                    this.setState(
-                    {
-                        'users': users
-                    }
-                )
-            }).catch(error => console.log(error))
-    }
+  constructor(props) {
 
-    render() {
-        return (
-            <div class='wrapper'>
-                <header>
-                    < MenuList />
-                </header>
+      super(props)
 
-                <div class="main">
-                    < UserList users={this.state.users} />
-                </div>
+      const author1 = {id: 1, name: 'Грин', birthday_year: 1880}
+      const author2 = {id: 2, name: 'Пушкин', birthday_year: 1799}
+      const authors = [author1, author2]
 
-                <footer class="footer">
-                    < Footer />
-                </footer>
+      const book1 = {id: 1, name: 'Алые паруса', author: author1}
+      const book2 = {id: 2, name: 'Золотая цепь', author: author1}
+      const book3 = {id: 3, name: 'Пиковая дама', author: author2}
+      const book4 = {id: 4, name: 'Руслан и Людмила', author: author2}
+      const books = [book1, book2, book3, book4]
 
-            </div>
+      this.state = {
+        'authors': authors,
+        'books': books,
+      }
+  }
 
-        )
-    }
+  render() {
+    return (
+      <div className="App">
+        <AuthorList items={this.state.authors} />
+        <BookList items={this.state.books} />
+      </div>
+    )
+  }
 }
 
 export default App;
