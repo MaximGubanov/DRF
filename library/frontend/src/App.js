@@ -1,12 +1,24 @@
 import React from 'react';
-import AuthorList from './components/Authors.js';
-import BookList from './components/Books.js';
+import axios from 'axios';
+import UsersList from './components/Users';
+import BooksList from './components/Book';
+import AuthorsList from './components/Authors';
+import AuthorBookList from './components/AuthorBooks';
+import {Route, Link, Switch, BrowserRouter} from 'react-router-dom';
 
+
+const NotFound404 = ({ location }) => {
+  return (
+    <div>
+      <h1>Страница по адресу '{location.pathname}' не найдена</h1>
+    </div>
+  )
+}
 
 class App extends React.Component {
 
   constructor(props) {
-
+    
       super(props)
 
       const author1 = {id: 1, name: 'Грин', birthday_year: 1880}
@@ -20,19 +32,53 @@ class App extends React.Component {
       const books = [book1, book2, book3, book4]
 
       this.state = {
-        'authors': authors,
+        'users': [],
         'books': books,
+        'authors': authors
       }
   }
 
-  render() {
-    return (
-      <div className="App">
-        <AuthorList items={this.state.authors} />
-        <BookList items={this.state.books} />
-      </div>
-    )
+  componentDidMount () {
+    axios.get('http://127.0.0.1:8000/users/')
+      .then(response => {
+        const users = response.data
+          this.setState(
+            {
+              'users': users
+            }
+          )}
+      )
+      .catch(error => console.log(error))
+  }
+
+  render () {
+      return (
+        <div className="App">
+          <BrowserRouter>
+            <nav>
+              <ul>
+                <li>
+                  <Link to='/users'>Users</Link>
+                </li>
+                <li>
+                  <Link to='/books'>Books</Link>
+                </li>
+                <li>
+                  <Link to='/authors'>Authors</Link>
+                </li>
+              </ul>
+            </nav>
+            <Switch>
+              <Route exact path='/users' component={() => <UsersList users={this.state.users}/>} />
+              <Route exact path='/books' component={() => <BooksList books={this.state.books}/>} />
+              <Route exact path='/authors' component={() => <AuthorsList authors={this.state.authors}/>} />
+              <Route exact path="/author/:id" component={() => <AuthorBookList items={this.state.books}/>} />
+              <Route component={NotFound404} />
+            </Switch>
+          </BrowserRouter>
+        </div>
+      )
   }
 }
 
-export default App;
+export default App
