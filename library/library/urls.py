@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken.views import obtain_auth_token
 
 from userapp.views import UserList, UserDetail, UserCreateViews
 from todoapp.views import ProjectLimitOffsetPaginatonViewSet, ProjectParamFilterViewSet, \
@@ -23,4 +24,5 @@ urlpatterns = [
     path('filters/', include(filter_router.urls)),
     path('todo/', ToDoLimitOffsetPaginatonListCreate.as_view()),
     path('todo/<int:pk>/', ToDoLimitOffsetPaginatonDetails.as_view()),
+    path('api-token-auth/', obtain_auth_token),
 ]
