@@ -2,23 +2,12 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 
-const AuthorItem = ({author}) => {
-    return (
-        <tr>
-            <td>
-                <Link to={`author/${author.id}`}>{author.id}</Link>
-            </td>
-            <td>
-                {author.name}
-            </td>
-            <td>
-                {author.birthday_year}
-            </td>
-        </tr>
-    )
-}
+export default function AuthorsList () {
 
-const AuthorsList = ({authors}) => {
+    const author1 = {id: 1, name: 'Грин', birthday_year: 1880}
+    const author2 = {id: 2, name: 'Пушкин', birthday_year: 1799}
+    const authors = [author1, author2]
+    
     return (
         <table>
             <th>
@@ -35,4 +24,18 @@ const AuthorsList = ({authors}) => {
     )
 }
 
-export default AuthorsList
+const AuthorItem = ({author}) => {
+    return (
+        <tr>
+            <td>
+                <Link to={`author/${author.id}`}>{author.id}</Link>
+            </td>
+            <td>
+                {author.name}
+            </td>
+            <td>
+                {author.birthday_year}
+            </td>
+        </tr>
+    )
+}
