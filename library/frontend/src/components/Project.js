@@ -1,12 +1,13 @@
 import React from 'react';
-import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 
 const ProjectItem = ({item}) => {
+
     return (
         <tr>
             <td>
-                {item.name}
+                <Link to={`{project/${item.name}}`}>{item.name}</Link>
             </td>
             <td>
                 {item.repo}
@@ -15,42 +16,19 @@ const ProjectItem = ({item}) => {
     )
 }
 
-class ProjectsList extends React.Component {
+const ProjectList = ({projects}) => {
 
-    constructor(props) {
-      
-        super(props)
-        this.state = {
-          'projects': []
-        }
-    }
-  
-    componentDidMount () {
-      axios.get('http://127.0.0.1:8002/filters/project/')
-        .then(response => {
-          const projects = response.data
-            this.setState(
-              {
-                'projects': projects.results
-              }
-            )}
-        )
-        .catch(error => console.log(error))
-    }
-
-    render () {
-        return (
-            <table>
-                <th>
-                    name
-                </th>
-                <th>
-                    repo
-                </th>
-                    {this.state.projects.map((item) => <ProjectItem item={item} />)}
-            </table>
-        )
-    }
+    return (
+        <table>
+            <th>
+                name
+            </th>
+            <th>
+                repo
+            </th>
+                {projects.map((item) => <ProjectItem item={item} />)}
+        </table>
+    )
 }
 
-export default ProjectsList;
+export default ProjectList;

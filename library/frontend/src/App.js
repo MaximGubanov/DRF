@@ -1,10 +1,9 @@
 import React from 'react';
+import axios from 'axios';
 import UsersList from './components/Users';
-// import BooksList from './components/Book';
-import AuthorsList from './components/Authors';
-// import AuthorBookList from './components/AuthorBooks';
 import ProjectsList from './components/Project';
 import TodosList from './components/Todo';
+// import ProjectInfo from './components/ProjectInfo';
 import {Route, Link, Switch, BrowserRouter} from 'react-router-dom';
 
 
@@ -21,8 +20,31 @@ class App extends React.Component {
   constructor(props) {
     
       super(props)
-      this.state = {}
+      this.state = {
+        'users': [],
+        'projects': [],
+        'todo': []
+      }
   }
+
+  getUsersData = () => axios.get('http://127.0.0.1:8002/users/').catch(err => null);
+  getProjectsData = () => axios.get('http://127.0.0.1:8002/filters/project/').catch(err => null);
+  getTodoData = () => axios.get('http://127.0.0.1:8002/todo/').catch(err => null);
+
+  async componentDidMount() {
+    try {
+        const [UserData, ProjectsData, TodoData] = await axios.all([ this.getUsersData(), this.getProjectsData(), this.getTodoData() ]);
+        this.setState({
+            'users': UserData.data,
+            'projects': ProjectsData.data.results,
+            'todo': TodoData.data.results
+          }
+        );
+    }
+    catch (err) {
+        console.log(err.message);
+    }
+}
 
 
   render () {
@@ -38,22 +60,14 @@ class App extends React.Component {
                   <Link to='/projects'>Projects</Link>
                 </li>
                 <li>
-                  <Link to='/authors'>Authors</Link>
-                </li>
-                <li>
                   <Link to='/todo'>TODO</Link>
                 </li>
-                {/* <li>
-                  <Link to='/books'>TODO</Link>
-                </li> */}
               </ul>
             </nav>
             <Switch>
-              <Route exact path='/users' component={() => <UsersList />} />
-              <Route exact path='/projects' component={() => <ProjectsList />} />
-              <Route exact path='/authors' component={() => <AuthorsList />} />
-              <Route exact path='/todo' component={() => <TodosList />} />
-              {/* <Route exact path='/books' component={() => <BooksList />} /> */}
+              <Route exact path='/users' component={() => <UsersList users={this.state.users} />} />
+              <Route exact path='/projects' component={() => <ProjectsList projects={this.state.projects} />} />
+              <Route exact path='/todo' component={() => <TodosList todos={this.state.todo} />} />
               <Route component={NotFound404} />
             </Switch>
           </BrowserRouter>
