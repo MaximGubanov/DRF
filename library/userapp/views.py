@@ -1,4 +1,4 @@
-from rest_framework import status
+from rest_framework import status, permissions
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -17,6 +17,7 @@ class UserCreateViews(ModelViewSet):
 class UserList(APIView):
 
     renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
+    permission_classes = [permissions.IsAuthenticated]
 
     #  возможность просмотреть всех пользователей
     def get(self, request):
