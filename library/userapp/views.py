@@ -10,6 +10,7 @@ from .serializer import UserModelSerializer
 
 
 class UserCreateViews(ModelViewSet):
+    permission_classes = [permissions.AllowAny]
     queryset = User.objects.all()
     serializer_class = UserModelSerializer
 
@@ -26,17 +27,18 @@ class UserList(APIView):
         return Response(serializer.data)
 
     #  возможность создавать пользователя (из усл. задания следует, что эту ф-ю нужно отключить)
-    # def post(self, request):
-    #     serializer = UserModelSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def post(self, request):
+        serializer = UserModelSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserDetail(APIView):
 
     renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self, pk):
         try:
