@@ -6,13 +6,18 @@ from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
 from django.http import Http404
 
 from .models import User
-from .serializer import UserModelSerializer
+from .serializer import UserModelSerializer, UserModelSerializer2
 
 
-class UserCreateViews(ModelViewSet):
+class UsersListViews(ModelViewSet):
     permission_classes = [permissions.AllowAny]
     queryset = User.objects.all()
     serializer_class = UserModelSerializer
+
+    def get_serializer_class(self):
+        if self.request.version == '2':
+            return UserModelSerializer2
+        return UserModelSerializer
 
 
 class UserList(APIView):
@@ -25,6 +30,8 @@ class UserList(APIView):
         queryset = User.objects.all()
         serializer = UserModelSerializer(queryset, many=True)
         return Response(serializer.data)
+
+
 
     #  возможность создавать пользователя (из усл. задания следует, что эту ф-ю нужно отключить)
     def post(self, request):

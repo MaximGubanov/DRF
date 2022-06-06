@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53343184-4928-4259-b6e0-44034c7c6681" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/library/library/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/library/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/library/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library/library/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/library/library/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/todoapp/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/todoapp/migrations/0002_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/todoapp/migrations/0003_alter_project_created_at_alter_todo_created_at.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/todoapp/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/library/todoapp/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/todoapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/library/todoapp/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/userapp/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/userapp/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/library/userapp/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/library/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/library/library/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/userapp/serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/library/userapp/serializer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library/userapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/library/userapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +19,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lesson_7_Authorization" />
+        <entry key="$PROJECT_DIR$" value="lesson_8_TestCase" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,14 +36,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/neytrino/DRF",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/neytrino/WSGI-framework&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python tests.Python tests for test.TestUsersViewSet">
     <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DRF" />
