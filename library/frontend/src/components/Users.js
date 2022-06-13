@@ -19,6 +19,7 @@ const UserItem = ({user}) => {
             <td>
                 {user.email}
             </td>
+            <td>{user.url}</td>
         </tr>
     )
 }
@@ -41,6 +42,7 @@ const UsersList = ({users}) => {
             <th>
                 email
             </th>
+            <th>URL</th>
                 {users.map((user) => < UserItem user={user} />)}
         </table>
     )

@@ -31,8 +31,6 @@ class UserList(APIView):
         serializer = UserModelSerializer(queryset, many=True)
         return Response(serializer.data)
 
-
-
     #  возможность создавать пользователя (из усл. задания следует, что эту ф-ю нужно отключить)
     def post(self, request):
         serializer = UserModelSerializer(data=request.data)

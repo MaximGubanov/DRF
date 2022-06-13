@@ -5,13 +5,13 @@ from .models import Project, Todo
 class ProjectModelSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Project
-        fields = '__all__'
+        fields = ['id', 'url', 'name', 'repo', 'created_at', 'updated_at', 'created_by']
 
 
 class ToDoModelSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Todo
-        fields = ['text', 'created_by', 'assigned_to', 'created_at', 'closed_at', 'is_active', 'project']
+        fields = ['id', 'text', 'project', 'created_by', 'is_active']
 
 
 class TodoSerializer(ModelSerializer):
@@ -20,4 +20,4 @@ class TodoSerializer(ModelSerializer):
 
     class Meta:
         model = Todo
-        fields = '__all__'
+        fields = ['id', 'text', 'project', 'created_by', 'is_active']
